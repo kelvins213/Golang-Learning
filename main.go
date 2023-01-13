@@ -1,16 +1,16 @@
 /*
 go mod init <application-name> => the first thing is run this command line
-create go.mod, which describes the project we have on the IDE
-you will always need to put your application file on  package
-to do it, you can write "package <package-name>"
+It creates go.mod, which describes the project we have on the IDE
+You will always need to put your application file on  package
+To do it, you can write "package <package-name>"
 */
 
 
 package main
 /*
-you need say to wherethe application begins to the compiler.
-this entry function is always the func main(){}
-for each file, you must have only one main() function.
+You need say where the application begins to the compiler.
+This entry function is always the func main(){}
+For each file, you must have only one main() function.
 */
 
 /*
@@ -40,31 +40,44 @@ func main() {
 	fmt.Printf("Welcome to %s booking application \n", conferenceName);
 
 	//in Go, we only have the for loop
-	for (wish != 2) {
+	for (wish != 3) {
 		fmt.Println("================> MENU <================");
-		fmt.Printf(" 1 - Buy tickets \n 2 - Exit System \n : ");
+		fmt.Printf("1 - Buy tickets \n2 - List Buyers \n3 - Exit System \n : ");
 		fmt.Scan(&wish)
 		if (wish == 1) {
-			fmt.Printf(" We have total of %v tickets and %v are still avaliable avaliable \n", conferenceTickets, remainingTickets);
-			fmt.Println(" Get your ticket here to attend");	
+			fmt.Printf("We have total of %v tickets and %v are still avaliable avaliable \n", conferenceTickets, remainingTickets);
+			fmt.Println("Get your ticket here to attend");	
 	
-			fmt.Printf(" Please, tell me your name: ");
+			fmt.Printf("Please, tell me your name: ");
 			fmt.Scanf("%v", &userName); //the same as C language
 		
-			fmt.Printf("\n How many tickets do you wish to buy? Answer: ");
+			fmt.Printf("\nHow many tickets do you wish to buy? Answer: ");
 			fmt.Scanf("%d", &userTickets); //o & serve para o compilador também ler o endereço de memória da variável userTickets
 	
 			if (userTickets > remainingTickets) {
-				fmt.Printf("\n Sorry, we only have %d tickets left \n", remainingTickets);
+				fmt.Printf("\nSorry, we only have %d tickets left \n", remainingTickets);
 			} else {
-				fmt.Println(" Thanks for helping us!");
+				fmt.Println("Thanks for helping us!");
 				remainingTickets = remainingTickets - userTickets;
 				bookings = append(bookings, userName);
 			}
+		} else {
+			if (wish == 2) {
+				var arrayLength = len(bookings);
+				if ( arrayLength > 0) {
+					for index, buyer := range bookings {
+						//index => the position where buyer is arrenged in the bookings array
+						//buyer => its the element
+						fmt.Printf("%dº buyer: [%s] \n", index + 1, buyer);
+					}
+				} else {
+					fmt.Println("We don't have buyers yet!");
+				}
+			} else {
+				fmt.Println("Thanks, goodbye!");
+			}
 		}
 	}
-	fmt.Println(bookings);
-
 	//iteration on a list
 	/*
 		for index, nameBooking := range bookings {
