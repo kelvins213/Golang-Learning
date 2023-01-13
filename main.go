@@ -25,57 +25,103 @@ import "fmt"
 the object fmt has the basics go's functions, like Print and Scanf 
 */
 
+/*
+we can import more than a package doing like this:
+import (
+	"fmt"
+	"strings"
+);
+*/
+var bookings []string; //its a slice, which is almost the same as an array
+const conferenceTickets = 50;
+var remainingTickets uint = 50; //variable typed like uint are not allowed to recieve negative values
+var userName string;
+var userTickets uint;
+
+func getUserName() {
+	fmt.Printf("Please, tell me your name: ");
+	fmt.Scanf("%v", &userName); 
+}
+
+func getUserTickets() {
+	fmt.Printf("\nHow many tickets do you wish to buy? Answer: ");
+	fmt.Scanf("%d", &userTickets); //o & serve para o compilador também ler o endereço de memória da variável userTickets
+}
+
+func validateUserInput() int{
+	var userNameLenght = len(userName);
+	return userNameLenght;
+}
+
+func buyTickets(userNameLenght int){
+	if (userNameLenght > 2) {
+		if (userTickets > remainingTickets) {
+			fmt.Printf("\nSorry, we only have %d tickets left \n", remainingTickets);
+		} else {
+			fmt.Println("Thanks for helping us!");
+			remainingTickets = remainingTickets - userTickets;
+			bookings = append(bookings, userName);
+		}
+	} else {
+		fmt.Println("Your name is not valid! Please, try again");
+		getUserName();	
+		var lenght = validateUserInput();
+		buyTickets(lenght);
+	}
+}
+
+func listBuyers(){
+	var arrayLength = len(bookings);
+	if (arrayLength > 0) {
+		for index, buyer := range bookings {
+			//index => the position where buyer is arrenged in the bookings array
+			//buyer => its the element
+			fmt.Printf("%dº buyer: [%s] \n", index + 1, buyer);
+		}
+		/*
+		for _, buyer := range bookings{} the underline works to ignore the use of a expected variable
+		*/
+	} else {
+		fmt.Println("We don't have buyers yet!");
+	}
+}
+
+func listRemainingTickets(){
+	fmt.Printf("\n We still have %d tickets avaliable of %d tickets \n", remainingTickets, conferenceTickets);
+}
+
+func endSystem(){
+	fmt.Println("Thanks, goodbye!");
+}
+
 func main() {	
 	var conferenceName = "Go Conference";
-	const conferenceTickets = 50;
-	var remainingTickets uint = 50; //variable typed like uint are not allowed to recieve negative values
-	var userName string;
-	var userTickets uint;
 	var wish int;
 
-	var bookings []string; //its a slice, which is almost the same as an array
+	
 	//bookings := [49] string{};
 	//var bookings = [50]string{"Nana", "Nicole", "Peter"};
 
 	fmt.Printf("Welcome to %s booking application \n", conferenceName);
 
 	//in Go, we only have the for loop
-	for (wish != 3) {
+	for (wish != 4 && remainingTickets != 0) {
 		fmt.Println("================> MENU <================");
-		fmt.Printf("1 - Buy tickets \n2 - List Buyers \n3 - Exit System \n : ");
+		fmt.Printf("1 - Buy tickets \n2 - List Buyers \n3 - List Remaining Tickets \n4 - Exit System \n : ");
 		fmt.Scan(&wish)
-		if (wish == 1) {
-			fmt.Printf("We have total of %v tickets and %v are still avaliable avaliable \n", conferenceTickets, remainingTickets);
-			fmt.Println("Get your ticket here to attend");	
-	
-			fmt.Printf("Please, tell me your name: ");
-			fmt.Scanf("%v", &userName); //the same as C language
-		
-			fmt.Printf("\nHow many tickets do you wish to buy? Answer: ");
-			fmt.Scanf("%d", &userTickets); //o & serve para o compilador também ler o endereço de memória da variável userTickets
-	
-			if (userTickets > remainingTickets) {
-				fmt.Printf("\nSorry, we only have %d tickets left \n", remainingTickets);
-			} else {
-				fmt.Println("Thanks for helping us!");
-				remainingTickets = remainingTickets - userTickets;
-				bookings = append(bookings, userName);
-			}
-		} else {
-			if (wish == 2) {
-				var arrayLength = len(bookings);
-				if ( arrayLength > 0) {
-					for index, buyer := range bookings {
-						//index => the position where buyer is arrenged in the bookings array
-						//buyer => its the element
-						fmt.Printf("%dº buyer: [%s] \n", index + 1, buyer);
-					}
-				} else {
-					fmt.Println("We don't have buyers yet!");
-				}
-			} else {
-				fmt.Println("Thanks, goodbye!");
-			}
+
+		switch wish {
+			case 1:
+				getUserName();
+				getUserTickets();
+				var length = validateUserInput();
+				buyTickets(length);
+			case 2:
+				listBuyers();
+			case 3:
+				listRemainingTickets();
+			default:
+				endSystem();
 		}
 	}
 	//iteration on a list
@@ -84,18 +130,20 @@ func main() {
 
 		}
 	*/
+	/*
+	infinites loops on Golang
+		for {
+
+		}
+		for true {
+
+		}
+	*/
+
+
+
 	//fmt.Printf("conferenceTickets is %T, remaingTickets is %T, conferenceName is %T \n", conferenceTickets, remainingTickets, conferenceName);
 
-	//fmt.Println("Welcome to ",conferenceName," booking application");
-	//fmt.Println("We have total of", conferenceTickets, "tickets and ", remainingTickets, " are still avaliable avaliable");
-	
-
-	//string for text
-	//int for numbers 
-	//fmt.Printf("Say your name: ");
-	//fmt.Scanf("%v", &userName); //the same as C language
-	//fmt.Scan(&userName) we can do this way too
-	//fmt.Printf("Your name is [%v] ", userName);
 	//fmt.Printf("How many tickets do you wish to buy? Answer: ");
 	//fmt.Scanf("%d", &userTickets); //o & serve para o compilador também ler o endereço de memória da variável userTickets
 
@@ -105,6 +153,6 @@ func main() {
 }
 
 /*
-To the application, you can run:
+To build the application, you can run:
 go run <file name>
 */
