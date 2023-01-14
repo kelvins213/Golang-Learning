@@ -3,12 +3,13 @@ package listing;
 
 import (
 	"fmt"
+	"booking-app/helper";
 );
 
 func ListBuyers(){
-	var arrayLength = len(Bookings);
+	var arrayLength = len(helper.Bookings);
 	if (arrayLength > 0) {
-		for index, buyer := range Bookings {
+		for index, buyer := range helper.Bookings {
 			//index => the position where buyer is arrenged in the bookings array
 			//buyer => its the element
 			fmt.Printf("%dº buyer: [%s] \n", index + 1, buyer);
@@ -22,5 +23,5 @@ func ListBuyers(){
 }
 
 func ListRemainingTickets(){
-	fmt.Printf("\n We still have %d tickets avaliable of %d tickets \n", RemainingTickets, ConferenceTickets);
+	fmt.Printf("\n We still have %d tickets avaliable of %d tickets \n", helper.RemainingTickets, helper.ConferenceTickets);
 }

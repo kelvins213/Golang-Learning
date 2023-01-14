@@ -23,10 +23,7 @@ It's like a container with lots of functionalities
 
 import (
 	"fmt"
-	"booking-app/geters"
-	"booking-app/validation"
-	"booking-app/listing"
-	"booking-app/helper"
+	"booking-app/menu"
 );
 /*
 the object fmt has the basics go's functions, like Print and Scanf 
@@ -43,48 +40,12 @@ import (
 const ConferenceTickets = 50;
 //variable typed like uint are not allowed to recieve negative values
 
-func ShowMenu(){
-	var wish int;
-
-	
-	//bookings := [49] string{};
-	//var bookings = [50]string{"Nana", "Nicole", "Peter"};
-
-
-	//in Go, we only have the for loop
-	for (wish != 4 && RemainingTickets != 0) {
-		fmt.Println("================> MENU <================");
-		fmt.Printf("1 - Buy tickets \n2 - List Buyers \n3 - List Remaining Tickets \n4 - Exit System \n: ");
-		fmt.Scan(&wish)
-
-		switch wish {
-			case 1:
-				userInteration();
-			case 2:
-				listing.ListBuyers();
-			case 3:
-				listing.ListRemainingTickets();
-			default:
-				endMenu();
-		}
-	}
-}
-
-func endMenu(){
-	fmt.Println("Thanks, goodbye!");
-}
-
-func userInteration(){
-	geters.GetUserName();
-	geters.GetUserTickets();
-	validation.ValidateUserInputs();
-}
 
 
 func main() {	
 	var conferenceName = "Go Conference";
 	fmt.Printf("Welcome to %s booking application \n", conferenceName);
-	ShowMenu();
+	menu.ShowMenu();
 	//iteration on a list
 	/*
 		for index, nameBooking := range bookings {

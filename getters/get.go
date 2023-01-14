@@ -1,11 +1,11 @@
-package geters;
+package getters;
 
 import (
 	"fmt"
 );
 
 var UserName string;
-var UserTickets string;
+var UserTickets uint;
 
 func GetUserName() {
 	fmt.Printf("Please, tell me your name: ");

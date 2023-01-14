@@ -1,17 +1,16 @@
 package validation
 
 import (
-	"fmt"
+	"booking-app/getters"
 	"booking-app/helper"
-	"booking-app/main"
-	"booking-app/geters"
+	"fmt"
 );
 
 var RemainingTickets uint = 50;
 
 func ValidateUserInputs(){
-	var userNameIsValid = len(UserName) <= 2;
-	var ticketsAreValide = UserTickets > RemainingTickets;
+	var userNameIsValid = len(getters.UserName) <= 2;
+	var ticketsAreValide = getters.UserTickets > RemainingTickets;
 
 	if (!userNameIsValid && !ticketsAreValide) {
 		helper.BuyTickets();
@@ -20,15 +19,15 @@ func ValidateUserInputs(){
 			fmt.Printf("\nSorry, your name has less than 2 letters \n");
 			fmt.Printf("\nSorry, we only have %d tickets left \n", RemainingTickets);
 			fmt.Printf("Try again \n\n");
-			main.ShowMenu();
+			menu.ShowMenu();
 		} else {
 			if (userNameIsValid) {
 				fmt.Printf("\nSorry, your name has less than 2 letters \n\n");
-				main.ShowMenu();
+				menu.ShowMenu();
 			} else {
 				fmt.Printf("\nSorry, we only have %d tickets left \n", RemainingTickets);
 				fmt.Printf("Please, try again \n\n");
-				main.ShowMenu();
+				menu.ShowMenu();
 			}
 		}
 	}

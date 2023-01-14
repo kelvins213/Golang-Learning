@@ -2,16 +2,17 @@ package helper
 
 import (
 	"fmt"
-	"booking-app/geters"
+	"booking-app/getters"
 );
 
 
-var bookings []string;
-var remainingTickets uint = 50;
+var Bookings []string;
+var RemainingTickets uint = 50;
+const ConferenceTickets uint = 50;
 
 func BuyTickets(){
-	remainingTickets = remainingTickets - UserTickets;
-	bookings = append(bookings, geters.UserName);
+	RemainingTickets = RemainingTickets - getters.UserTickets;
+	Bookings = append(Bookings, getters.UserName);
 	fmt.Println("Your tickets has just been granted");
 }
 
