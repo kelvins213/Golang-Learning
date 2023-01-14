@@ -27,9 +27,10 @@ func BuyTickets(){
 	str := strconv.FormatUint(uint64(getters.UserTickets), 10);
 
 	BookingsNamesMap["Name"] = getters.UserName;
+	BookingsNamesMap["Space"] = " ";
 	BookingsNamesMap["Tickets"] = str;
 
-	BookingsNames = append(BookingsNames, BookingsNamesMap["Name"] + " " + BookingsNamesMap["Tickets"] + " Tickets");
+	BookingsNames = append(BookingsNames, BookingsNamesMap["Name"] + BookingsNamesMap["Space"] + BookingsNamesMap["Tickets"] + BookingsNamesMap["Space"] + "Tickets");
 	fmt.Println("Your tickets has just been granted");
 }
 
