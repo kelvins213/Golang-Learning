@@ -20,15 +20,12 @@ func ValidateUserInputs(){
 			fmt.Printf("\nSorry, your name has less than 2 letters \n");
 			fmt.Printf("\nSorry, we only have %d tickets left \n", RemainingTickets);
 			fmt.Printf("Try again \n\n");
-			//menu.ShowMenu();
 		} else {
 			if (userNameIsValid) {
 				fmt.Printf("\nSorry, your name has less than 2 letters \n\n");
-				//menu.ShowMenu();
 			} else {
 				fmt.Printf("\nSorry, we only have %d tickets left \n", RemainingTickets);
 				fmt.Printf("Please, try again \n\n");
-				//menu.ShowMenu();
 			}
 		}
 	}

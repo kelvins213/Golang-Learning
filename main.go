@@ -46,21 +46,7 @@ func main() {
 	var conferenceName = "Go Conference";
 	fmt.Printf("Welcome to %s booking application \n", conferenceName);
 	menu.ShowMenu();
-	//iteration on a list
-	/*
-		for index, nameBooking := range bookings {
-
-		}
-	*/
-	/*
-	infinites loops on Golang
-		for {
-
-		}
-		for true {
-
-		}
-	*/
+	
 
 
 
