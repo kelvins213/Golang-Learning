@@ -18,7 +18,7 @@ const ConferenceTickets uint = 50;
 
 func BuyTickets(){
 
-	var BookingsNamesMap = make(map[string]string,0); //or var BookingsNames = make(map[string]string);
+	var BookingsNamesMap = make(map[string]string,0); 
 
 
 	RemainingTickets = RemainingTickets - getters.UserTickets;
