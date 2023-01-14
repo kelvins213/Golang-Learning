@@ -20,7 +20,14 @@ Each package has functions we can use.
 It's like a container with lots of functionalities
 */
 
-import "fmt"
+
+import (
+	"fmt"
+	"booking-app/geters"
+	"booking-app/validation"
+	"booking-app/listing"
+	"booking-app/helper"
+);
 /*
 the object fmt has the basics go's functions, like Print and Scanf 
 */
@@ -32,14 +39,11 @@ import (
 	"strings"
 );
 */
-var bookings []string; //its a slice, which is almost the same as an array
-const conferenceTickets = 50;
-var remainingTickets uint = 50; //variable typed like uint are not allowed to recieve negative values
-var userName string;
-var userTickets uint;
+ //its a slice, which is almost the same as an array
+const ConferenceTickets = 50;
+//variable typed like uint are not allowed to recieve negative values
 
-
-func showMenu(){
+func ShowMenu(){
 	var wish int;
 
 	
@@ -48,7 +52,7 @@ func showMenu(){
 
 
 	//in Go, we only have the for loop
-	for (wish != 4 && remainingTickets != 0) {
+	for (wish != 4 && RemainingTickets != 0) {
 		fmt.Println("================> MENU <================");
 		fmt.Printf("1 - Buy tickets \n2 - List Buyers \n3 - List Remaining Tickets \n4 - Exit System \n: ");
 		fmt.Scan(&wish)
@@ -57,9 +61,9 @@ func showMenu(){
 			case 1:
 				userInteration();
 			case 2:
-				listBuyers();
+				listing.ListBuyers();
 			case 3:
-				listRemainingTickets();
+				listing.ListRemainingTickets();
 			default:
 				endMenu();
 		}
@@ -71,16 +75,16 @@ func endMenu(){
 }
 
 func userInteration(){
-	getUserName();
-	getUserTickets();
-	validateUserInputs();
+	geters.GetUserName();
+	geters.GetUserTickets();
+	validation.ValidateUserInputs();
 }
 
 
 func main() {	
 	var conferenceName = "Go Conference";
 	fmt.Printf("Welcome to %s booking application \n", conferenceName);
-	showMenu();
+	ShowMenu();
 	//iteration on a list
 	/*
 		for index, nameBooking := range bookings {
