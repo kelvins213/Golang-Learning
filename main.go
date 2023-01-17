@@ -6,10 +6,10 @@ package main
 
 import (
 	"fmt"
+	"booking-app/data"
 );
 
 var (
-	people []person
 	name string;
 	age uint;
 	wish = false;
@@ -18,10 +18,6 @@ var (
 
 //person é como um construtor, que criara um objeto
 //do tipo person com os atributos de sua estrutura
-type person struct{
-	name string;
-	age uint;
-}
 
 func showMenu(){
 	for {
@@ -32,16 +28,11 @@ func showMenu(){
 			fmt.Scan(&name);
 			fmt.Printf("\n Digite a idade da pessoa: ");
 			fmt.Scan(&age);
-			people = append(people, person{name: name, age: age});		
-		} else {
+			people.Main(name, age);
+		
+			} else {
 			break;
 		}
-	}
-}
-
-func listPeople(){
-	for _, person := range people{
-		fmt.Printf("[%s]:[%d] \n", person.name, person.age);
 	}
 }
 
@@ -53,6 +44,6 @@ func main() {
 	fmt.Scan(&wish);
 	
 	if wish {
-		listPeople();	
+		people.ListPeople();	
 	}
 }
