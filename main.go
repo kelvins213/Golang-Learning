@@ -59,6 +59,6 @@ func main() {
 	fmt.Scan(&wish);
 	
 	if wish {
-		people.ListPeople();	
+		people.ListPeople();
 	}
 }

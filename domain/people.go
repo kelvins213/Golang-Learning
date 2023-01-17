@@ -1,7 +1,7 @@
 package people
 
 import (
-	//"fmt"
+	"fmt"
 );
 
 type Person struct{
@@ -10,6 +10,10 @@ type Person struct{
 	Car Car;
 }
 
-func PersonCharacteristic(){
-	//fmt.Printf("[%s]:[%d] \n", Name, Age);
+func (p Person) ListPeople(){
+	fmt.Printf("[%s]:[%d] \n", p.Name , p.Age);	
+	fmt.Println("Carro");
+	fmt.Printf("Nome: [%s] \n", p.Car.Name);
+	fmt.Printf("Modelo: [%s] \n", p.Car.Model);
+	fmt.Printf("Fabricante: [%s] \n", p.Car.Manufacturer);
 }
