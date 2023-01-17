@@ -7,8 +7,9 @@ import (
 type Person struct{
 	Name string;
 	Age uint;
+	Car Car;
 }
 
-func personCharacteristic(){
+func PersonCharacteristic(){
 	//fmt.Printf("[%s]:[%d] \n", Name, Age);
 }
