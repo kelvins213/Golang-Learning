@@ -10,7 +10,10 @@ type Person struct{
 	Car Car;
 }
 
-func (p Person) ListPeople(){
+//(p Person) é como se fosse o this.
+func (p Person) ListPerson(){
+
+	fmt.Printf("PESSOAAAAAA \n");	
 	fmt.Printf("[%s]:[%d] \n", p.Name , p.Age);	
 	fmt.Println("Carro");
 	fmt.Printf("Nome: [%s] \n", p.Car.Name);

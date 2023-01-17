@@ -18,6 +18,9 @@ func Main(name string, age uint, car people.Car){
 		fmt.Println(someone.Name);
 	*/
 	
+	person := people.Person{Name: name, Age: age, Car: car};
+	person.ListPerson();
+
 	humans = append(humans,  people.Person{Name: name, Age: age, Car: car});	
 
 }
