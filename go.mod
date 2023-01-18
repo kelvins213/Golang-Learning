@@ -1,3 +1,3 @@
-module booking-app
+module GoAPI
 
 go 1.19
