@@ -1,5 +1,5 @@
 /*
-go mod init <application-name> => the first thing is run this command line
+go mod init <application-name> => the first thing to do consists on running this command line
 It creates go.mod, which describes the project we have on the IDE
 You will always need to put your application file on  package
 To do it, you can write "package <package-name>"
